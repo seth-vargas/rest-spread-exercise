@@ -34,10 +34,9 @@ const doubleAndReturnArgs = (arr, ...args) => {
 /** remove a random element in the items array
 and return a new array without that item. */
 
-const removeRandom = (...items) => {
-  const newArr = [...items]
-  randomIndex = Math.floor(Math.random() * items.length + 1)
-  return newArr.filter((value) => value !== randomIndex)
+const removeRandom = (items) => {
+  let index = Math.floor(Math.random() * items.length)
+  return [...items.slice(0, index), ...items.slice(index + 1)]
 }
 
 /** Return a new array with every item in array1 and array2. */
@@ -49,15 +48,18 @@ const extend = (array1, array2) => {
 /** Return a new object with all the keys and values
 from obj and a new key/value pair */
 
-function addKeyVal(obj, key, val) {
-
+const addKeyValue = (object, key, value) => {
+  const newObject = {...object}
+  newObject[key] = value
+  return newObject
 }
-
 
 /** Return a new object with a key removed. */
 
-function removeKey(obj, key) {
-
+const removeKey = (object, key) => {
+  const newObject = {...object}
+  delete newObject[key]
+  return newObject
 }
 
 
@@ -70,6 +72,8 @@ const combine = (obj1, obj2) => {
 
 /** Return a new object with a modified key and value. */
 
-function update(obj, key, val) {
-
+const update = (obj, key, val) => {
+  const newObject = [...object]
+  newObject[key] = val
+  return newObject
 }
